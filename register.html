@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Hult Prize</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+
+        
         * {
             margin: 0;
             padding: 0;
@@ -17,6 +20,7 @@
             background: linear-gradient(to bottom, #1a1a1a, #000000);
             color: white;
             min-height: 100vh;
+            line-height: 1.6;
         }
 
         header {
@@ -57,16 +61,18 @@
 
         .registration-section {
             padding: 120px 20px 40px;
+            min-height: calc(100vh - 60px);
         }
 
         .registration-container {
             max-width: 800px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 1rem;
             color: #EC008C;
             text-shadow: 0 0 10px rgba(236, 0, 140, 0.3);
@@ -74,7 +80,7 @@
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: #e0e0e0;
             margin-bottom: 3rem;
         }
@@ -83,14 +89,14 @@
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(236, 0, 140, 0.2);
             border-radius: 15px;
-            padding: 2rem;
+            padding: clamp(1rem, 3vw, 2rem);
             margin-top: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .form-section {
             margin-bottom: 2rem;
-            padding: 1.5rem;
+            padding: clamp(1rem, 2vw, 1.5rem);
             border: 1px solid rgba(236, 0, 140, 0.1);
             border-radius: 8px;
             background: rgba(0, 0, 0, 0.3);
@@ -100,7 +106,6 @@
         .form-section:hover {
             border-color: rgba(236, 0, 140, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(236, 0, 140, 0.1);
         }
 
         .section-header {
@@ -123,24 +128,105 @@
             display: block;
             margin-bottom: 0.5rem;
             color: #e0e0e0;
-            font-weight: 500;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
-        input, textarea, select {
+        input, textarea {
             width: 100%;
-            padding: 0.8rem;
+            padding: clamp(0.8rem, 2vw, 1rem);
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(236, 0, 140, 0.2);
             border-radius: 4px;
             color: white;
+            font-size: 16px;
             transition: all 0.3s;
         }
 
-        input:focus, textarea:focus, select:focus {
+        input:focus, textarea:focus {
             outline: none;
             border-color: #EC008C;
             background: rgba(255, 255, 255, 0.1);
             box-shadow: 0 0 0 2px rgba(236, 0, 140, 0.1);
+        }
+
+        /* Category Select Styling */
+        .category-select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(236, 0, 140, 0.2);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .category-select:hover {
+            border-color: #EC008C;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .category-select:focus {
+            outline: none;
+            border-color: #EC008C;
+            box-shadow: 0 0 0 2px rgba(236, 0, 140, 0.2);
+        }
+
+        .category-select option {
+            padding: 12px;
+            background-color: #1a1a1a;
+        }
+
+        /* Category Colors */
+        .category-select option.sustainability {
+            color: #4CAF50;
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+
+        .category-select option.healthcare {
+            color: #2196F3;
+            background-color: rgba(33, 150, 243, 0.1);
+        }
+
+        .category-select option.education {
+            color: #FFC107;
+            background-color: rgba(255, 193, 7, 0.1);
+        }
+
+        .category-select option.fintech {
+            color: #9C27B0;
+            background-color: rgba(156, 39, 176, 0.1);
+        }
+
+        .category-select option.social {
+            color: #E91E63;
+            background-color: rgba(233, 30, 99, 0.1);
+        }
+
+        .category-select option.agriculture {
+            color: #8BC34A;
+            background-color: rgba(139, 195, 74, 0.1);
+        }
+
+        .category-select option.energy {
+            color: #FF9800;
+            background-color: rgba(255, 152, 0, 0.1);
+        }
+
+        .category-select option.water {
+            color: #00BCD4;
+            background-color: rgba(0, 188, 212, 0.1);
+        }
+
+        .category-select option.waste {
+            color: #795548;
+            background-color: rgba(121, 85, 72, 0.1);
+        }
+
+        .category-select option.other {
+            color: #9E9E9E;
+            background-color: rgba(158, 158, 158, 0.1);
         }
 
         .team-members {
@@ -152,12 +238,12 @@
         .submit-btn {
             background: #EC008C;
             color: white;
-            padding: 1rem 2rem;
+            padding: clamp(0.8rem, 2vw, 1rem) 2rem;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
             font-weight: bold;
             transition: all 0.3s;
             position: relative;
@@ -167,25 +253,6 @@
         .submit-btn:hover {
             background: rgba(236, 0, 140, 0.8);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(236, 0, 140, 0.2);
-        }
-
-        .submit-btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .submit-btn:hover::after {
-            width: 300px;
-            height: 300px;
         }
 
         .required {
@@ -200,7 +267,7 @@
             border-radius: 8px;
             animation: slideIn 0.5s ease-out;
             z-index: 1000;
-            max-width: 400px;
+            max-width: min(400px, 90vw);
         }
 
         .success-message .message-content {
@@ -208,7 +275,6 @@
             padding: 20px;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .error-message .message-content {
@@ -216,34 +282,7 @@
             padding: 20px;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        /* Category Select Styling */
-        .category-select {
-            padding: 12px;
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(236, 0, 140, 0.2);
-            color: white;
-            cursor: pointer;
-        }
-
-        .category-select option {
-            padding: 12px;
-            background-color: #1a1a1a;
-        }
-
-        .sustainability-option { color: #4CAF50; }
-        .healthcare-option { color: #2196F3; }
-        .education-option { color: #FFC107; }
-        .fintech-option { color: #9C27B0; }
-        .social-option { color: #E91E63; }
-        .agriculture-option { color: #8BC34A; }
-        .energy-option { color: #FF9800; }
-        .water-option { color: #00BCD4; }
-        .waste-option { color: #795548; }
-        .other-option { color: #9E9E9E; }
 
         @keyframes slideIn {
             from { transform: translateX(100%); opacity: 0; }
@@ -251,12 +290,56 @@
         }
 
         @media (max-width: 768px) {
-            .section-title {
-                font-size: 2rem;
+            .category-select {
+                padding: 15px;
             }
+
             .team-members {
                 grid-template-columns: 1fr;
             }
+
+            .message {
+                width: 90%;
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+            }
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .github-link {
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .github-link:hover {
+            color: #EC008C;
+            background: rgba(236, 0, 140, 0.1);
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -393,16 +476,36 @@
                         <label>Project Category <span class="required">*</span></label>
                         <select name="project_category" class="category-select" required>
                             <option value="" disabled selected>Select a category</option>
-                            <option value="sustainability" class="sustainability-option">🌱 Sustainability & Environment</option>
-                            <option value="healthcare" class="healthcare-option">🏥 Healthcare Innovation</option>
-                            <option value="education" class="education-option">📚 Education Technology</option>
-                            <option value="fintech" class="fintech-option">💰 Financial Technology</option>
-                            <option value="social" class="social-option">🤝 Social Impact</option>
-                            <option value="agriculture" class="agriculture-option">🌾 Agriculture & Food</option>
-                            <option value="energy" class="energy-option">⚡ Clean Energy</option>
-                            <option value="water" class="water-option">💧 Water Solutions</option>
-                            <option value="waste" class="waste-option">♻️ Waste Management</option>
-                            <option value="other" class="other-option">🎯 Other Innovations</option>
+                            <option value="sustainability" class="category-option sustainability">
+                                🌱 Sustainability & Environment
+                            </option>
+                            <option value="healthcare" class="category-option healthcare">
+                                🏥 Healthcare Innovation
+                            </option>
+                            <option value="education" class="category-option education">
+                                📚 Education Technology
+                            </option>
+                            <option value="fintech" class="category-option fintech">
+                                💰 Financial Technology
+                            </option>
+                            <option value="social" class="category-option social">
+                                🤝 Social Impact
+                            </option>
+                            <option value="agriculture" class="category-option agriculture">
+                                🌾 Agriculture & Food
+                            </option>
+                            <option value="energy" class="category-option energy">
+                                ⚡ Clean Energy
+                            </option>
+                            <option value="water" class="category-option water">
+                                💧 Water Solutions
+                            </option>
+                            <option value="waste" class="category-option waste">
+                                ♻️ Waste Management
+                            </option>
+                            <option value="other" class="category-option other">
+                                🎯 Other Innovations
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -412,7 +515,20 @@
         </div>
     </main>
 
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 AhmedMohammed-Dev.</p>
+            <div class="social-links">
+                <a href="https://github.com/AhmedMohammed-Dev" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // Form submission
         function submitForm(event) {
             event.preventDefault();
             
@@ -448,29 +564,31 @@
             });
         }
 
+        // Success message
         function showSuccessMessage() {
             const message = document.createElement('div');
             message.className = 'message success-message';
             message.innerHTML = `
                 <div class="message-content">
-                    <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
-                    <h3 style="margin-bottom: 0.5rem;">Registration Successful!</h3>
-                    <p style="margin-bottom: 0.5rem;">Your team has been registered successfully.</p>
-                    <p style="font-size: 0.9rem;">You will receive a confirmation email shortly.</p>
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Registration Successful!</h3>
+                    <p>Your team has been registered successfully.</p>
+                    <p>You will receive a confirmation email shortly.</p>
                 </div>
             `;
             showMessage(message);
         }
 
+        // Error message
         function showErrorMessage() {
             const message = document.createElement('div');
             message.className = 'message error-message';
             message.innerHTML = `
                 <div class="message-content">
-                    <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
-                    <h3 style="margin-bottom: 0.5rem;">Registration Failed</h3>
-                    <p style="margin-bottom: 0.5rem;">There was an error submitting your registration.</p>
-                    <p style="font-size: 0.9rem;">Please try again or contact support.</p>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>Registration Failed</h3>
+                    <p>There was an error submitting your registration.</p>
+                    <p>Please try again or contact support.</p>
                 </div>
             `;
             showMessage(message);
@@ -483,6 +601,7 @@
             }, 5000);
         }
 
+        // Form validation
         document.addEventListener('DOMContentLoaded', function() {
             const phoneInput = document.querySelector('input[name="leader_phone"]');
             if (phoneInput) {
@@ -503,6 +622,17 @@
                     }
                 });
             });
+
+            // Category select enhancement
+            const categorySelect = document.querySelector('.category-select');
+            if (categorySelect) {
+                categorySelect.addEventListener('change', function() {
+                    this.style.borderColor = '#EC008C';
+                    const selectedOption = this.options[this.selectedIndex];
+                    const categoryClass = selectedOption.className.split(' ')[1];
+                    this.className = `category-select ${categoryClass}`;
+                });
+            }
         });
 
         function validateEmail(email) {
