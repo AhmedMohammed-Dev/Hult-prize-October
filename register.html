@@ -69,6 +69,7 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: #EC008C;
+            text-shadow: 0 0 10px rgba(236, 0, 140, 0.3);
         }
 
         .section-subtitle {
@@ -84,6 +85,7 @@
             border-radius: 15px;
             padding: 2rem;
             margin-top: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .form-section {
@@ -92,10 +94,13 @@
             border: 1px solid rgba(236, 0, 140, 0.1);
             border-radius: 8px;
             background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
 
         .form-section:hover {
             border-color: rgba(236, 0, 140, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(236, 0, 140, 0.1);
         }
 
         .section-header {
@@ -107,6 +112,7 @@
 
         .section-header i {
             color: #EC008C;
+            font-size: 1.2rem;
         }
 
         .form-group {
@@ -117,6 +123,7 @@
             display: block;
             margin-bottom: 0.5rem;
             color: #e0e0e0;
+            font-weight: 500;
         }
 
         input, textarea, select {
@@ -133,6 +140,7 @@
             outline: none;
             border-color: #EC008C;
             background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 2px rgba(236, 0, 140, 0.1);
         }
 
         .team-members {
@@ -150,11 +158,34 @@
             cursor: pointer;
             width: 100%;
             font-size: 1.1rem;
+            font-weight: bold;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
         .submit-btn:hover {
             background: rgba(236, 0, 140, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(236, 0, 140, 0.2);
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .submit-btn:hover::after {
+            width: 300px;
+            height: 300px;
         }
 
         .required {
@@ -177,6 +208,7 @@
             padding: 20px;
             border-radius: 8px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .error-message .message-content {
@@ -184,7 +216,34 @@
             padding: 20px;
             border-radius: 8px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        /* Category Select Styling */
+        .category-select {
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(236, 0, 140, 0.2);
+            color: white;
+            cursor: pointer;
+        }
+
+        .category-select option {
+            padding: 12px;
+            background-color: #1a1a1a;
+        }
+
+        .sustainability-option { color: #4CAF50; }
+        .healthcare-option { color: #2196F3; }
+        .education-option { color: #FFC107; }
+        .fintech-option { color: #9C27B0; }
+        .social-option { color: #E91E63; }
+        .agriculture-option { color: #8BC34A; }
+        .energy-option { color: #FF9800; }
+        .water-option { color: #00BCD4; }
+        .waste-option { color: #795548; }
+        .other-option { color: #9E9E9E; }
 
         @keyframes slideIn {
             from { transform: translateX(100%); opacity: 0; }
@@ -225,11 +284,11 @@
                     </div>
                     <div class="form-group">
                         <label>Team Name <span class="required">*</span></label>
-                        <input type="text" name="team_name" required>
+                        <input type="text" name="team_name" required placeholder="Enter your team name">
                     </div>
                     <div class="form-group">
                         <label>University ID <span class="required">*</span></label>
-                        <input type="text" name="university_id" required>
+                        <input type="text" name="university_id" required placeholder="Enter your university ID">
                     </div>
                 </div>
 
@@ -242,19 +301,19 @@
                     <div class="team-members">
                         <div class="form-group">
                             <label>Full Name <span class="required">*</span></label>
-                            <input type="text" name="leader_name" required>
+                            <input type="text" name="leader_name" required placeholder="Enter team leader's full name">
                         </div>
                         <div class="form-group">
                             <label>Email <span class="required">*</span></label>
-                            <input type="email" name="leader_email" required>
+                            <input type="email" name="leader_email" required placeholder="Enter team leader's email">
                         </div>
                         <div class="form-group">
                             <label>Phone Number <span class="required">*</span></label>
-                            <input type="tel" name="leader_phone" required>
+                            <input type="tel" name="leader_phone" required placeholder="Enter team leader's phone number">
                         </div>
                         <div class="form-group">
                             <label>Student ID <span class="required">*</span></label>
-                            <input type="text" name="leader_id" required>
+                            <input type="text" name="leader_id" required placeholder="Enter team leader's student ID">
                         </div>
                     </div>
                 </div>
@@ -270,15 +329,15 @@
                     <div class="team-members">
                         <div class="form-group">
                             <label>Member 1 Full Name</label>
-                            <input type="text" name="member1_name">
+                            <input type="text" name="member1_name" placeholder="Enter member's full name">
                         </div>
                         <div class="form-group">
                             <label>Member 1 Email</label>
-                            <input type="email" name="member1_email">
+                            <input type="email" name="member1_email" placeholder="Enter member's email">
                         </div>
                         <div class="form-group">
                             <label>Member 1 Student ID</label>
-                            <input type="text" name="member1_id">
+                            <input type="text" name="member1_id" placeholder="Enter member's student ID">
                         </div>
                     </div>
 
@@ -286,15 +345,15 @@
                     <div class="team-members">
                         <div class="form-group">
                             <label>Member 2 Full Name</label>
-                            <input type="text" name="member2_name">
+                            <input type="text" name="member2_name" placeholder="Enter member's full name">
                         </div>
                         <div class="form-group">
                             <label>Member 2 Email</label>
-                            <input type="email" name="member2_email">
+                            <input type="email" name="member2_email" placeholder="Enter member's email">
                         </div>
                         <div class="form-group">
                             <label>Member 2 Student ID</label>
-                            <input type="text" name="member2_id">
+                            <input type="text" name="member2_id" placeholder="Enter member's student ID">
                         </div>
                     </div>
 
@@ -302,15 +361,15 @@
                     <div class="team-members">
                         <div class="form-group">
                             <label>Member 3 Full Name</label>
-                            <input type="text" name="member3_name">
+                            <input type="text" name="member3_name" placeholder="Enter member's full name">
                         </div>
                         <div class="form-group">
                             <label>Member 3 Email</label>
-                            <input type="email" name="member3_email">
+                            <input type="email" name="member3_email" placeholder="Enter member's email">
                         </div>
                         <div class="form-group">
                             <label>Member 3 Student ID</label>
-                            <input type="text" name="member3_id">
+                            <input type="text" name="member3_id" placeholder="Enter member's student ID">
                         </div>
                     </div>
                 </div>
@@ -323,22 +382,27 @@
                     </div>
                     <div class="form-group">
                         <label>Project Title <span class="required">*</span></label>
-                        <input type="text" name="project_title" required>
+                        <input type="text" name="project_title" required placeholder="Enter your project title">
                     </div>
                     <div class="form-group">
                         <label>Project Description <span class="required">*</span></label>
-                        <textarea name="project_description" rows="4" required></textarea>
+                        <textarea name="project_description" rows="4" required 
+                            placeholder="Describe your project idea and its impact..."></textarea>
                     </div>
                     <div class="form-group">
                         <label>Project Category <span class="required">*</span></label>
-                        <select name="project_category" required>
-                            <option value="">Select a category</option>
-                            <option value="sustainability">Sustainability</option>
-                            <option value="education">Education</option>
-                            <option value="healthcare">Healthcare</option>
-                            <option value="fintech">FinTech</option>
-                            <option value="agriculture">Agriculture</option>
-                            <option value="other">Other</option>
+                        <select name="project_category" class="category-select" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="sustainability" class="sustainability-option">🌱 Sustainability & Environment</option>
+                            <option value="healthcare" class="healthcare-option">🏥 Healthcare Innovation</option>
+                            <option value="education" class="education-option">📚 Education Technology</option>
+                            <option value="fintech" class="fintech-option">💰 Financial Technology</option>
+                            <option value="social" class="social-option">🤝 Social Impact</option>
+                            <option value="agriculture" class="agriculture-option">🌾 Agriculture & Food</option>
+                            <option value="energy" class="energy-option">⚡ Clean Energy</option>
+                            <option value="water" class="water-option">💧 Water Solutions</option>
+                            <option value="waste" class="waste-option">♻️ Waste Management</option>
+                            <option value="other" class="other-option">🎯 Other Innovations</option>
                         </select>
                     </div>
                 </div>
@@ -360,7 +424,6 @@
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData.entries());
             
-            // استخدام رابط النشر الخاص بك
             fetch('https://script.google.com/macros/s/AKfycbxBqVPcvNBb3vvytGtisLxeZL2-js3D-bdrhkhjAuQvFTCuVQ_xQJIo4Z5G9Wf54KssaQ/exec', {
                 method: 'POST',
                 mode: 'no-cors',
@@ -390,10 +453,10 @@
             message.className = 'message success-message';
             message.innerHTML = `
                 <div class="message-content">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Registration Successful!</h3>
-                    <p>Your team has been registered successfully.</p>
-                    <p>You will receive a confirmation email shortly.</p>
+                    <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                    <h3 style="margin-bottom: 0.5rem;">Registration Successful!</h3>
+                    <p style="margin-bottom: 0.5rem;">Your team has been registered successfully.</p>
+                    <p style="font-size: 0.9rem;">You will receive a confirmation email shortly.</p>
                 </div>
             `;
             showMessage(message);
@@ -404,10 +467,10 @@
             message.className = 'message error-message';
             message.innerHTML = `
                 <div class="message-content">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <h3>Registration Failed</h3>
-                    <p>There was an error submitting your registration.</p>
-                    <p>Please try again or contact support.</p>
+                    <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 0.5rem;"></i>
+                    <h3 style="margin-bottom: 0.5rem;">Registration Failed</h3>
+                    <p style="margin-bottom: 0.5rem;">There was an error submitting your registration.</p>
+                    <p style="font-size: 0.9rem;">Please try again or contact support.</p>
                 </div>
             `;
             showMessage(message);
@@ -420,7 +483,6 @@
             }, 5000);
         }
 
-        // Form validation
         document.addEventListener('DOMContentLoaded', function() {
             const phoneInput = document.querySelector('input[name="leader_phone"]');
             if (phoneInput) {
